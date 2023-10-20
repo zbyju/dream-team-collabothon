@@ -1,7 +1,19 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const getUsers = async () => {
+    const user = doc(database, 'users', "DUyKUYtcQoaBBiRXMXR6")
+    const data = await getDoc(user)
+    console.log(user)
+    console.log(data)
+  }
+
+  useEffect(() => {
+    getUsers()
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
