@@ -1,4 +1,4 @@
-import { Heading, Img } from "@chakra-ui/react"
+import { Box, Button, Flex, Heading, Img, Link } from "@chakra-ui/react"
 import { ReactNode } from "react"
 import Image from "next/image"
 
