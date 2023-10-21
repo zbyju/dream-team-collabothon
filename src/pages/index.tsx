@@ -1,11 +1,15 @@
-import { Button } from '@chakra-ui/react'
+import NextLink from 'next/link'
+import { Button, Link } from '@chakra-ui/react'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
-  const test: String = "test"
-  return (
-    <div>
-      {test}
-      <Button>TEst</Button>
-    </div>
-  )
+function RedirectPage() {
+  return <div>Redirecting...</div>;
 }
+
+export async function getServerSideProps(context: any) {
+  context.res.writeHead(302, { Location: '/app' });
+  context.res.end();
+  return { props: {} };
+}
+
+export default RedirectPage;
