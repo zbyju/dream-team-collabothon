@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/layouts/Layout";
 import React from "react";
 import {
+  Input,
   Select,
   FormLabel,
   FormControl,
@@ -19,6 +20,7 @@ import { AuthInfo } from "../../types/user";
 export default function Add() {
   const [transactionType, setTransactionType] = React.useState('')
   const [transactionCount, setTransactionCount] = React.useState(1)
+  const [description, setDescription] = React.useState("")
   const toast = useToast()
 
   const [auth, setAuth] = useState<AuthInfo>({ user: null, loggedIn: false })
@@ -52,20 +54,34 @@ export default function Add() {
       return;
     }
     try {
-      const response = await fetch("/api/transactions", {
+      await fetch("/api/transactions", {
         method: "POST", headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({
-          description: "",
+          description,
           category: parseInt(transactionType),
           count: transactionCount,
           user: auth.user.id
         })
       })
-      console.log(response)
+      toast({
+        title: 'Transaction successfully added',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      setTransactionType('')
+      setTransactionCount(1)
+      setDescription('')
     } catch (err) {
       console.log(err)
+      toast({
+        title: 'There was an error when adding a new transaction',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
     }
   }
 
@@ -100,7 +116,7 @@ export default function Add() {
         </FormControl>
         <FormControl pl={50} pr={50} m={5}>
           <FormLabel>Add Description</FormLabel>
-          <Input bgGradient="linear(to-t, grey.100, grey.200)" placeholder={description} value={description} onChange = {(event) => setTransactionDescription(event.target.value)} />
+          <Input bgGradient="linear(to-t, grey.100, grey.200)" placeholder={description} value={description} onChange={(event) => setDescription(event.target.value)} />
         </FormControl>
         <Button colorScheme='blue' variant='outline' onClick={() => handleSubmit()} maxW={300} m={5} ml={50} >Add New Action</Button>
       </Card>
