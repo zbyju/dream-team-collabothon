@@ -3,9 +3,18 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="0,74" last-zoom="1" max-obj-count="4"
-	 default-schema="public" default-owner="postgres">
-<database name="new_database" is-template="false" allow-conns="true">
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="4">
+<role name="admin"
+      superuser="true"
+      createdb="true"
+      replication="true"
+      createrole="true"
+      inherit="true"
+      login="true"
+      bypassrls="true">
+</role>
+
+<database name="collab" is-template="false" allow-conns="true">
 </database>
 
 <schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
@@ -13,63 +22,104 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="transactions" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="200" y="180"/>
-	<column name="id" not-null="true"
-	 identity-type="ALWAYS" start="0" increment="1">
-		<type name="smallint" length="0"/>
+	<role name="admin"/>
+	<position x="60" y="60"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
 	</column>
 	<column name="date" not-null="true">
 		<type name="date" length="0"/>
 	</column>
 	<column name="description">
-		<type name="char" length="0"/>
+		<type name="varchar" length="0"/>
 	</column>
 	<column name="category">
-		<type name="smallint" length="0"/>
+		<type name="integer" length="0"/>
 	</column>
 	<column name="user" not-null="true">
-		<type name="smallint" length="0"/>
+		<type name="integer" length="0"/>
 	</column>
 </table>
 
-<table name="users" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+<table name="users" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="200" y="420"/>
-	<column name="id" not-null="true"
-	 identity-type="ALWAYS" start="0" increment="1">
-		<type name="smallint" length="0"/>
+	<role name="admin"/>
+	<position x="460" y="140"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
 	</column>
 	<column name="name">
-		<type name="char" length="0"/>
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="esg">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="password">
+		<type name="varchar" length="0"/>
 	</column>
 </table>
 
-<table name="categories" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+<table name="categories" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="600" y="180"/>
-	<column name="id" not-null="true"
-	 identity-type="ALWAYS" start="0" increment="1">
-		<type name="smallint" length="0"/>
+	<role name="admin"/>
+	<position x="520" y="420"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
 	</column>
 	<column name="name" not-null="true">
-		<type name="char" length="0"/>
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="description">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="score">
+		<type name="integer" length="0"/>
 	</column>
 </table>
 
 <table name="stats" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="580" y="380"/>
-	<column name="id" not-null="true"
-	 identity-type="ALWAYS" start="0" increment="1">
-		<type name="smallint" length="0"/>
+	<role name="admin"/>
+	<position x="900" y="140"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
 	</column>
 	<column name="esg" not-null="true">
-		<type name="real" length="0"/>
+		<type name="integer" length="0"/>
 	</column>
 </table>
+
+<constraint name="user" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.users" table="public.transactions">
+	<columns names="user" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="category" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.categories" table="public.transactions">
+	<columns names="category" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="esg" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.stats" table="public.users">
+	<columns names="esg" ref-type="src-columns"/>
+	<columns names="esg" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_transactions_users" type="relfk" layer="0"
+	 src-table="public.transactions"
+	 dst-table="public.users" reference-fk="user"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_transactions_categories" type="relfk" layer="0"
+	 src-table="public.transactions"
+	 dst-table="public.categories" reference-fk="category"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_users_stats" type="relfk" layer="0"
+	 src-table="public.users"
+	 dst-table="public.stats" reference-fk="esg"
+	 src-required="false" dst-required="false"/>
 
 </dbmodel>
