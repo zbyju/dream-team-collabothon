@@ -39,11 +39,11 @@ CREATE TABLE public.transactions (
 ALTER TABLE public.transactions OWNER TO admin;
 -- ddl-end --
 
-INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'1', E'1347085827', E'gasoline', E'1', E'1', E'20');
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'1', E'2019-10-11 10:10:25-07', E'gasoline', E'1', E'1', E'20');
 -- ddl-end --
-INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'2', E'1347085827', E'bread', E'2', E'1', E'2');
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'2', E'2019-10-11 10:10:25-07', E'bread', E'2', E'1', E'2');
 -- ddl-end --
-INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'3', E'1347085827', E'meat', E'3', E'1', E'6');
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'3', E'2019-10-11 10:10:25-07', E'meat', E'3', E'1', E'6');
 -- ddl-end --
 
 -- object: public.users | type: TABLE --

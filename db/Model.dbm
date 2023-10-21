@@ -44,9 +44,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<initial-data>
 <![CDATA[id•date•description•category•user•count⸣
-1•1347085827•gasoline•1•1•20⸣
-2•1347085827•bread•2•1•2⸣
-3•1347085827•meat•3•1•6]]>
+1•2019-10-11 10:10:25-07•gasoline•1•1•20⸣
+2•2019-10-11 10:10:25-07•bread•2•1•2⸣
+3•2019-10-11 10:10:25-07•meat•3•1•6]]>
 	</initial-data>
 </table>
 
