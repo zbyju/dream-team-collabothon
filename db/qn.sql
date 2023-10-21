@@ -29,7 +29,7 @@ CREATE DATABASE collab;
 -- DROP TABLE IF EXISTS public.transactions CASCADE;
 CREATE TABLE public.transactions (
 	id serial NOT NULL,
-	date date NOT NULL,
+	date timestamp NOT NULL,
 	description varchar,
 	category integer,
 	"user" integer NOT NULL
@@ -38,7 +38,7 @@ CREATE TABLE public.transactions (
 ALTER TABLE public.transactions OWNER TO admin;
 -- ddl-end --
 
-INSERT INTO public.transactions (id, date, description, category, "user") VALUES (E'1', E'2023-10-13', E'gasoline', E'1', E'1');
+INSERT INTO public.transactions (id, date, description, category, "user") VALUES (E'1', E'1347085827', E'gasoline', E'1', E'1');
 -- ddl-end --
 
 -- object: public.users | type: TABLE --
