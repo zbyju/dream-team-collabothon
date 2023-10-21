@@ -1,15 +1,14 @@
 import NextLink from 'next/link'
-import { Button, Link } from '@chakra-ui/react'
+import { Box, Button, Link } from '@chakra-ui/react'
 import { redirect } from 'next/navigation'
+import BigLayout from '../components/layouts/BigLayout'
 
-function RedirectPage() {
-  return <div>Redirecting...</div>;
+export default function Home() {
+  return <BigLayout>
+    <Box>Quest for nature</Box>
+    <Box>Go to login: </Box>
+    <Link as={NextLink} href="/auth/login">Login</Link>
+  </BigLayout>
 }
 
-export async function getServerSideProps(context: any) {
-  context.res.writeHead(302, { Location: '/app' });
-  context.res.end();
-  return { props: {} };
-}
 
-export default RedirectPage;

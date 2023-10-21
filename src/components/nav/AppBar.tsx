@@ -18,7 +18,7 @@ export default function AppBar() {
   return <Box shadow="sm" position="fixed" w="full" bottom={0}>
     <Flex justify="center" alignItems="center" h={50}>
       {btns.map(b => (
-        <Link as={NextLink} href={b.href} passHref flexGrow={1} h="full" bg="green.500" _hover={{ bg: "green.400" }}>
+        <Link key={b.href} as={NextLink} href={b.href} passHref flexGrow={1} h="full" bg="green.500" _hover={{ bg: "green.400" }}>
           <Flex h="full" justify="center" alignItems="center" py={3}>
             <Icon as={b.icon} w={7} h={7} m="auto" />
           </Flex>
