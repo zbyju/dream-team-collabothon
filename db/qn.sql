@@ -30,15 +30,20 @@ CREATE DATABASE collab;
 CREATE TABLE public.transactions (
 	id serial NOT NULL,
 	date timestamp NOT NULL,
-	description varchar,
+	description varchar NOT NULL,
 	category integer,
-	"user" integer NOT NULL
+	"user" integer NOT NULL,
+	count integer NOT NULL
 );
 -- ddl-end --
 ALTER TABLE public.transactions OWNER TO admin;
 -- ddl-end --
 
-INSERT INTO public.transactions (id, date, description, category, "user") VALUES (E'1', E'1347085827', E'gasoline', E'1', E'1');
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'1', E'1347085827', E'gasoline', E'1', E'1', E'20');
+-- ddl-end --
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'2', E'1347085827', E'bread', E'2', E'1', E'2');
+-- ddl-end --
+INSERT INTO public.transactions (id, date, description, category, "user", count) VALUES (E'3', E'1347085827', E'meat', E'3', E'1', E'6');
 -- ddl-end --
 
 -- object: public.users | type: TABLE --
@@ -69,6 +74,10 @@ ALTER TABLE public.categories OWNER TO admin;
 -- ddl-end --
 
 INSERT INTO public.categories (id, name, description, score) VALUES (E'1', E'gasoline', E'1 liter of gasoline', E'8');
+-- ddl-end --
+INSERT INTO public.categories (id, name, description, score) VALUES (E'2', E'bakery', E'100 grams of bakery', E'2');
+-- ddl-end --
+INSERT INTO public.categories (id, name, description, score) VALUES (E'3', E'meat', E'100 grams of meat', E'7');
 -- ddl-end --
 
 -- object: public.stats | type: TABLE --
