@@ -5,19 +5,20 @@ import {
   Select,
   FormLabel,
   FormControl,
-  Input,
   NumberInput,
   NumberIncrementStepper,
   NumberDecrementStepper,
   NumberInputStepper,
   NumberInputField,
   Card,
-  Button
+  Button,
+  Input
 } from "@chakra-ui/react";
 
 export default function Add() {
   const [transactionType, setTransactionType] = React.useState('')
   const [transactionCount, setTransactionCount] = React.useState("1")
+  const [description, setTransactionDescription] = React.useState("I just done it.")
   
   function handleSubmit() {
     if(transactionCount == null || transactionType == '') {
@@ -39,7 +40,7 @@ export default function Add() {
     <Layout>
       <Card m = {50}>
       <FormControl pl={50} pr={50} m={5}>
-        <FormLabel>Count:</FormLabel>
+        <FormLabel>What have you been working on?:</FormLabel>
           <Select placeholder='Select option' value ={transactionType} onChange = {(event) => setTransactionType(event.target.value)}>
             { categories.map(c => <option value={c.id} key={c.id}>{c.name} : {c.score * transactionCount}</option>)}
           </Select>
@@ -55,6 +56,10 @@ export default function Add() {
               <NumberDecrementStepper />
             </NumberInputStepper>
           </NumberInput>
+        </FormControl>
+        <FormControl pl={50} pr={50} m={5}>
+          <FormLabel>Add Description</FormLabel>
+          <Input bgGradient="linear(to-t, grey.100, grey.200)" placeholder={description} value={description} onChange = {(event) => setTransactionDescription(event.target.value)} />
         </FormControl>
         <Button colorScheme='blue' variant='outline' onClick={() => handleSubmit()} maxW={300} m={5} ml={50} >Add New Action</Button>
       </Card>
