@@ -5,16 +5,25 @@ import LoginInput from "../../components/login/LoginInput";
 import { useEffect, useState } from "react";
 import { redirect } from 'next/navigation';
 import { Center, Button, Card, CardHeader, CardBody, CardFooter, Text, Heading, Box, Link } from '@chakra-ui/react'
-import useAuth, { defaultAuth } from "../../hooks/useAuth";
+import { AuthInfo } from "../../types/user";
 
 export default function Login() {
   const [username, setUsername] = useState("guest")
   const [password, setPassword] = useState("guest123")
-  const [auth, setAuth] = useState(defaultAuth())
+  const [auth, setAuth] = useState<AuthInfo>({ user: null, loggedIn: false })
 
   useEffect(() => {
-    setAuth(useAuth())
-  })
+    try {
+      const username = localStorage.getItem('username');
+      if (username) {
+        setAuth({ user: { username }, loggedIn: true })
+      } else {
+        setAuth({ user: null, loggedIn: false })
+      }
+    } catch (error) {
+      setAuth({ user: null, loggedIn: false })
+    }
+  }, [])
 
   function handleSubmit() {
     localStorage.setItem("username", JSON.stringify(username));
@@ -23,9 +32,9 @@ export default function Login() {
   return (
     <BigLayout>
       {
-        auth.loggedIn ? (
+        auth && auth.loggedIn ? (
           <Box>
-            <Heading>Already logged in as: {auth.user.username}</Heading>
+            <Heading>Already logged in as: {auth?.user?.username}</Heading>
             <Link href="/app">Back to the homepage</Link>
           </Box>
         ) : (
