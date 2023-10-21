@@ -16,10 +16,24 @@ import {
 } from "@chakra-ui/react";
 
 export default function Add() {
-  const [transactionType, setTransactionType] = React.useState("")
+  const [transactionType, setTransactionType] = React.useState('')
   const [transactionCount, setTransactionCount] = React.useState("1")
   
-  function handleSubmit() {}
+  function handleSubmit() {
+    if(transactionCount == null || transactionType == '') {
+      console.log('Add transaction did not proceed : transaction count is null');    
+      return;
+    }
+    //TODO:Submit new transaction here
+  }
+
+  const categories = [
+    {id: 1, name: "Food", score:-2},
+    {id: 2, name: "Drink", score:-1},
+    {id: 3, name: 'Shower', score:-4},
+    {id: 4, name: 'Plant a tree', score:2},
+    {id: 5, name: 'Public cleaning', score:2}
+  ]
   
   return (
     <Layout>
@@ -27,9 +41,7 @@ export default function Add() {
       <FormControl pl={50} pr={50} m={5}>
         <FormLabel>Count:</FormLabel>
           <Select placeholder='Select option' value ={transactionType} onChange = {(event) => setTransactionType(event.target.value)}>
-            <option value='option1'>Option 1</option>
-            <option value='option2'>Option 2</option>
-            <option value='option3'>Option 3</option>
+            { categories.map(c => <option value={c.id} key={c.id}>{c.name} : {c.score * transactionCount}</option>)}
           </Select>
         </FormControl>
         <FormControl pl={50} pr={50} m={5}>
