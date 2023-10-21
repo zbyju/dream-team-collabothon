@@ -39,6 +39,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="user" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
+	<initial-data>
+<![CDATA[id•date•description•category•user⸣
+1•2023-10-13•gasoline•1•1]]>
+	</initial-data>
 </table>
 
 <table name="users" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
@@ -57,12 +61,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="password">
 		<type name="varchar" length="0"/>
 	</column>
+	<initial-data>
+<![CDATA[id•name•esg•password⸣
+1•guest•1•1234]]>
+	</initial-data>
 </table>
 
 <table name="categories" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="admin"/>
-	<position x="520" y="420"/>
+	<position x="240" y="460"/>
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -75,6 +83,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="score">
 		<type name="integer" length="0"/>
 	</column>
+	<initial-data>
+<![CDATA[id•name•description•score⸣
+1•gasoline•1 liter of gasoline•8]]>
+	</initial-data>
 </table>
 
 <table name="stats" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
@@ -87,7 +99,43 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="esg" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
+	<initial-data>
+<![CDATA[id•esg⸣
+1•0]]>
+	</initial-data>
 </table>
+
+<index name="stats_id" table="public.stats"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="users_id" table="public.users"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="categories_id" table="public.categories"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="transactions_id" table="public.transactions"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
 
 <constraint name="user" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.users" table="public.transactions">
@@ -104,7 +152,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <constraint name="esg" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.stats" table="public.users">
 	<columns names="esg" ref-type="src-columns"/>
-	<columns names="esg" ref-type="dst-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
 <relationship name="rel_transactions_users" type="relfk" layer="0"
