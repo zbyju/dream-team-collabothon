@@ -1,4 +1,4 @@
-import Layout from "../../components/layouts/BigLayout";
+import Layout from "../../components/layouts/Layout";
 
 export default function Add() {
   return (
