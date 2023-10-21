@@ -26,7 +26,7 @@ export default function Add() {
       <Card m = {50}>
       <FormControl pl={50} pr={50} m={5}>
         <FormLabel>Count:</FormLabel>
-          <Select placeholder='Select option' value ={transactionType}>
+          <Select placeholder='Select option' value ={transactionType} onChange = {(event) => setTransactionType(event.target.value)}>
             <option value='option1'>Option 1</option>
             <option value='option2'>Option 2</option>
             <option value='option3'>Option 3</option>
