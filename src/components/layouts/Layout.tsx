@@ -15,8 +15,9 @@ export default function Layout({ children }: Props) {
   useEffect(() => {
     try {
       const username = localStorage.getItem('username');
-      if (username) {
-        setAuth({ user: { username }, loggedIn: true })
+      const id = parseInt(localStorage.getItem('userid') || "");
+      if (username && id) {
+        setAuth({ user: { username, id }, loggedIn: true })
       } else {
         setAuth({ user: null, loggedIn: false })
       }

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { pool } from "./database/init"
+import { pool } from "./init"
 
 export default async function hello(req: NextApiRequest, res: NextApiResponse) {
   console.log("test")
