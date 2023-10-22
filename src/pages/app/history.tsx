@@ -71,7 +71,7 @@ export default function History() {
           <Grid alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} mt={2} h='14em' maxH='14'>
             {history.map((transaction) => (
               <GridItem key={transaction.tid}>
-                <Button onClick={() => { setSelectedTransaction(transaction) }} maxW="100%" width="100%" bg="blue.100" px={0} color="blue.900">
+                <Button onClick={() => { setSelectedTransaction(transaction) }} _hover={{ bg: "blue.200" }} maxW="100%" width="100%" bg="blue.100" px={0} color="blue.900">
                   <Table alignItems="center" pt='1em' pb='1em'>
                     <Tbody>
                       <Tr>
