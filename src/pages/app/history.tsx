@@ -41,10 +41,9 @@ export default function History() {
 
   return (
     <Layout>
-      <Heading m="5%">Action History:</Heading>
-      <Box bg='orange.200' h='1em'></Box>
-      <Box bg='orange.200' h='15em' maxHeight="15em" w='full' maxW='full'>
-        <Table pl='5em' pr='2em' h='1em' maxH='1em' w='full' maxW='full' bg='red.100'>
+      <Heading m="5%">Action History</Heading>
+      <Box w='90%' mx="auto" maxW='full'>
+        <Table pl='5em' pr='2em' h='1em' maxH='1em' w='full' maxW='full' bg='green.100'>
           <Tbody>
             <Tr>
               <Th w="33%"><Text
@@ -52,27 +51,27 @@ export default function History() {
                 textTransform="uppercase"
                 fontSize="25"
                 letterSpacing="wide"
-                color="teal.600">Date</Text></Th>
+                color="green.900">Date</Text></Th>
               <Th w="33%"><Text
                 fontWeight="bold"
                 textTransform="uppercase"
                 fontSize="25"
                 letterSpacing="wide"
-                color="teal.600">Type</Text></Th>
+                color="green.900">Type</Text></Th>
               <Th w="33%"><Text
                 fontWeight="bold"
                 textTransform="uppercase"
                 fontSize="25"
                 letterSpacing="wide"
-                color="teal.600">Score</Text></Th>
+                color="green.900">Score</Text></Th>
             </Tr>
           </Tbody>
         </Table>
-        <Box overflowY="auto" bg='orange.200' h='14em' maxHeight="14em" w='full' maxW='full'>
-          <Grid p='0.5em' alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} h='14em' maxH='14'>
+        <Box w='full' maxW='full' overflowY="auto" h="300px">
+          <Grid alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} mt={2} h='14em' maxH='14'>
             {history.map((transaction) => (
               <GridItem key={transaction.tid}>
-                <Button onClick={() => { setSelectedTransaction(transaction) }} maxW="100%" width="100%" bg="blue.200">
+                <Button onClick={() => { setSelectedTransaction(transaction) }} maxW="100%" width="100%" bg="blue.100" px={0} color="blue.900">
                   <Table alignItems="center" pt='1em' pb='1em'>
                     <Tbody>
                       <Tr>
@@ -88,9 +87,8 @@ export default function History() {
           </Grid>
         </Box>
       </Box>
-      <Box bg='orange.200' h='2.5em'></Box>
-      <Box p={4} display={{ md: "flex" }}>
-        <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+      <Box display={{ md: "flex" }} w="90%" mx="auto" mb={32}>
+        <Box mt={5} >
           <Text
             fontWeight="bold"
             textTransform="uppercase"
@@ -112,6 +110,6 @@ export default function History() {
           {selectedTransaction === null ? (<Text mt={2} color="gray.500"></Text>) : (<Text mt={2} color="gray.500">{selectedTransaction.cdescription}</Text>)}
         </Box>
       </Box>
-    </Layout >
+    </Layout>
   );
 }
