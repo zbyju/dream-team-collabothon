@@ -18,19 +18,19 @@ import {
 
 export default function History() {
   const transactionsHistory = [
-    {id: 1, date:'14.10.2023', transactionType: "Food", score:-2, description: 'it was a 22nice day'},
-    {id: 2, date:'14.10.2023', transactionType: "Drink", score:-1, description: 'it was a n23345ice day'},
-    {id: 3, date:'14.10.2023', transactionType: 'Shower', score:-4, description: 'it was a nice day'},
-    {id: 4, date:'14.10.2023', transactionType: 'Plant a tree', score:2, description: 'it was a nice day'},
-    {id: 5, date:'14.10.2023', transactionType: 'Public cleaning', score:2, description: 'it was a nice day'},
-    {id: 6, date:'14.10.2023', transactionType: "Food", score:-2, description: 'it was a nice day'},
-    {id: 7, date:'14.10.2023', transactionType: "Drink", score:-1, description: 'it was a nice day'},
-    {id: 8, date:'14.10.2023', transactionType: 'Shower', score:-4, description: 'it was a nice day'},
-    {id: 9, date:'14.10.2023', transactionType: 'Plant a tree', score:2, description: 'it was a nice day'},
-    {id: 10, date:'14.10.2023', transactionType: 'Public cleaning', score:2, description: 'it was a nice day'}
+    { id: 1, date: '14.10.2023', transactionType: "Food", score: -2, description: 'it was a 22nice day' },
+    { id: 2, date: '14.10.2023', transactionType: "Drink", score: -1, description: 'it was a n23345ice day' },
+    { id: 3, date: '14.10.2023', transactionType: 'Shower', score: -4, description: 'it was a nice day' },
+    { id: 4, date: '14.10.2023', transactionType: 'Plant a tree', score: 2, description: 'it was a nice day' },
+    { id: 5, date: '14.10.2023', transactionType: 'Public cleaning', score: 2, description: 'it was a nice day' },
+    { id: 6, date: '14.10.2023', transactionType: "Food", score: -2, description: 'it was a nice day' },
+    { id: 7, date: '14.10.2023', transactionType: "Drink", score: -1, description: 'it was a nice day' },
+    { id: 8, date: '14.10.2023', transactionType: 'Shower', score: -4, description: 'it was a nice day' },
+    { id: 9, date: '14.10.2023', transactionType: 'Plant a tree', score: 2, description: 'it was a nice day' },
+    { id: 10, date: '14.10.2023', transactionType: 'Public cleaning', score: 2, description: 'it was a nice day' }
   ]
-  const [selectedTransaction, setSelectedTransaction] = useState<any|null>(null)
-  
+  const [selectedTransaction, setSelectedTransaction] = useState<any | null>(null)
+
   return (
     <Layout>
       <Heading m="5%">Action History</Heading>
