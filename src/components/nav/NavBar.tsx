@@ -10,7 +10,7 @@ interface Props {
 
 export default function NavBar({ isLoggedIn }: Props) {
 
-  return <Box bg="green.100" shadow="sm">
+  return <Box bg="green.100" shadow="sm" top={0}  w="full" >
     <Flex px={5} py={3} justify="space-between" alignItems="center">
       <Logo />
       {isLoggedIn === true ?

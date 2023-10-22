@@ -40,7 +40,7 @@ export default function Add() {
   }, [])
 
   async function handleSubmit() {
-    if (!transactionCount) {
+    if (!transactionCount || !transactionType) {
       console.log('Add transaction did not proceed : transaction count is null');
       return;
     }

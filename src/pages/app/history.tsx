@@ -12,6 +12,8 @@ import {
   ChakraProvider,
   Text,
   Button,
+  GridItem,
+  Grid,
 } from "@chakra-ui/react";
 
 export default function History() {
@@ -31,38 +33,71 @@ export default function History() {
   
   return (
     <Layout>
-      <div>     
-        <Box padding={3}>
-        <Heading>Action History</Heading>
-          <Table>
-          <Thead position="sticky" top={0} bgColor="grey">
-                  <Tr>
-                        <Td>Date</Td>
-                        <Td>Type</Td>
-                        <Td>score</Td>
-                      </Tr>
-              </Thead>
-        </Table>
-        <Box overflowY="auto" maxHeight="300px">
-          <Table variant="striped" colorScheme="teal">
-            <Tbody m = {50}>
+      <Heading m="5%">Action History</Heading>
+      <Table pl ='5em' pr='2em'   h='1em' maxH='5em' w='full' maxW='full' bg='red.100'>
+        <Tr>
+          <Th><Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize="25"
+            letterSpacing="wide"
+            color="teal.600">Date</Text></Th>
+          <Th><Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize="25"
+            letterSpacing="wide"
+            color="teal.600">Type</Text></Th>
+          <Th><Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize="25"
+            letterSpacing="wide"
+            color="teal.600">Score</Text></Th>
+        </Tr>
+      </Table>
+      <Box bg='orange.200' h='1em'></Box>
+      <Box overflowY="auto" bg='orange.200' h='15em' maxHeight="15em" w='full' maxW='full'>
+        <Grid p='0.5em' alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} h='15em' maxH='15'>
             {transactionsHistory.map((transaction) => (
-                    <Button onClick={(event)=>{setSelectedTransaction(transaction)}} maxW ="600px" width = "600px" bg="green.100">
-                    <Tr>
-                      <Td>{transaction.date}</Td>
-                      <Td>{transaction.transactionType}</Td>
-                      <Td>{transaction.score}</Td>
-                    </Tr>
-                    </Button>
+              <GridItem>     
+                  <Button onClick={(event)=>{setSelectedTransaction(transaction)}} maxW ="100%" width = "100%" bg="blue.200">
+                    <Table alignItems="center" gap={5} pt='1em' pb='1em'>
+                      <Tr>
+                        <Th>{transaction.date}</Th>
+                        <Th>{transaction.transactionType}</Th>
+                        <Th>{transaction.score}</Th>
+                      </Tr>
+                    </Table>
+                  </Button>
+              </GridItem>
                 ))}
-            </Tbody>
-          </Table>
+        </Grid>
+      </Box>
+      <Box bg='orange.200' h='1em'></Box>
+      <Box p={4} display={{ md: "flex" }}>
+        <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+            <Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize="25"
+            letterSpacing="wide"
+            color="teal.600"
+            >
+                {selectedTransaction === null ? 'Nothing selected' : (<>{selectedTransaction.transactionType}</>)}
+            </Text>
+            <Text
+            mt={1}
+            display="block"
+            fontSize="lg"
+            lineHeight="normal"
+            fontWeight="semibold"
+            >
+                Description:
+            </Text>
+            {selectedTransaction === null ? (<Text mt={2} color="gray.500"></Text>) : (<Text mt={2} color="gray.500">{selectedTransaction.description}</Text>)}
         </Box>
       </Box>
-      <Box width={500} height = "400px" m={50} bg ={"green.100"}>
-        {selectedTransaction === null ? (<Text>Nothing selected</Text>) : (<Text>{selectedTransaction.description}</Text>)}
-      </Box>
-      </div>
     </Layout>
-  );  
+  );
 }
