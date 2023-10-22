@@ -12,8 +12,8 @@ export default function BigLayout({ children }: Props) {
       <Box>
         <Center>
           <Img src="/images/QuestForNature.png" alt="logo" />
-      </Center>
-    </Box>
+        </Center>
+      </Box>
       <main>{children}</main>
     </Box>
   )

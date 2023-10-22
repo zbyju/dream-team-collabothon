@@ -1,16 +1,19 @@
 import NextLink from 'next/link'
-import { Box, Button, Link } from '@chakra-ui/react'
+import { Box, Button, Flex, Link } from '@chakra-ui/react'
 import { redirect } from 'next/navigation'
 import BigLayout from '../components/layouts/BigLayout'
+import { useEffect } from 'react'
 
 export default function Home() {
-    try {
-      window.location.href = "/auth/login"
-    } catch (error) {}
+  useEffect(() => {
+    window.location.href = "/auth/login"
+  })
   return <BigLayout>
-    <Box>Quest for nature</Box>
-    <Box>Go to login: </Box>
-    <Link as={NextLink} href="/auth/login">Login</Link>
+    <Flex direction="column" alignItems="center" justify="center" mx="auto" w="90%">
+      <Box>Quest for nature</Box>
+      <Box>Go to login: </Box>
+      <Link as={NextLink} href="/auth/login">Login</Link>
+    </Flex>
   </BigLayout>
 }
 
