@@ -34,47 +34,49 @@ export default function History() {
   return (
     <Layout>
       <Heading m="5%">Action History</Heading>
-      <Table pl ='5em' pr='2em'   h='1em' maxH='5em' w='full' maxW='full' bg='red.100'>
-        <Tr>
-          <Th><Text
-            fontWeight="bold"
-            textTransform="uppercase"
-            fontSize="25"
-            letterSpacing="wide"
-            color="teal.600">Date</Text></Th>
-          <Th><Text
-            fontWeight="bold"
-            textTransform="uppercase"
-            fontSize="25"
-            letterSpacing="wide"
-            color="teal.600">Type</Text></Th>
-          <Th><Text
-            fontWeight="bold"
-            textTransform="uppercase"
-            fontSize="25"
-            letterSpacing="wide"
-            color="teal.600">Score</Text></Th>
-        </Tr>
-      </Table>
       <Box bg='orange.200' h='1em'></Box>
-      <Box overflowY="auto" bg='orange.200' h='15em' maxHeight="15em" w='full' maxW='full'>
-        <Grid p='0.5em' alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} h='15em' maxH='15'>
-            {transactionsHistory.map((transaction) => (
-              <GridItem>     
-                  <Button onClick={(event)=>{setSelectedTransaction(transaction)}} maxW ="100%" width = "100%" bg="blue.200">
-                    <Table alignItems="center" gap={5} pt='1em' pb='1em'>
-                      <Tr>
-                        <Th>{transaction.date}</Th>
-                        <Th>{transaction.transactionType}</Th>
-                        <Th>{transaction.score}</Th>
-                      </Tr>
-                    </Table>
-                  </Button>
-              </GridItem>
-                ))}
-        </Grid>
+      <Box bg='orange.200' h='15em' maxHeight="15em" w='full' maxW='full'>
+        <Table pl ='5em' pr='2em'   h='1em' maxH='1em' w='full' maxW='full' bg='red.100'>
+          <Tr>
+            <Th><Text
+              fontWeight="bold"
+              textTransform="uppercase"
+              fontSize="25"
+              letterSpacing="wide"
+              color="teal.600">Date</Text></Th>
+            <Th><Text
+              fontWeight="bold"
+              textTransform="uppercase"
+              fontSize="25"
+              letterSpacing="wide"
+              color="teal.600">Type</Text></Th>
+            <Th><Text
+              fontWeight="bold"
+              textTransform="uppercase"
+              fontSize="25"
+              letterSpacing="wide"
+              color="teal.600">Score</Text></Th>
+          </Tr>
+        </Table>
+        <Box overflowY="auto" bg='orange.200' h='14em' maxHeight="14em" w='full' maxW='full'>
+          <Grid p='0.5em' alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} h='14em' maxH='14'>
+              {transactionsHistory.map((transaction) => (
+                <GridItem>     
+                    <Button onClick={(event)=>{setSelectedTransaction(transaction)}} maxW ="100%" width = "100%" bg="blue.200">
+                      <Table alignItems="center" pt='1em' pb='1em'>
+                        <Tr>
+                          <Th>{transaction.date}</Th>
+                          <Th>{transaction.transactionType}</Th>
+                          <Th>{transaction.score}</Th>
+                        </Tr>
+                      </Table>
+                    </Button>
+                </GridItem>
+                  ))}
+          </Grid>
+        </Box>
       </Box>
-      <Box bg='orange.200' h='1em'></Box>
+      <Box bg='orange.200' h='2.5em'></Box>
       <Box p={4} display={{ md: "flex" }}>
         <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
             <Text

@@ -13,7 +13,8 @@ import {
   NumberInputField,
   Card,
   Button,
-  useToast
+  useToast,
+  Box
 } from "@chakra-ui/react";
 import { AuthInfo } from "../../types/user";
 
@@ -95,7 +96,9 @@ export default function Add() {
 
   return (
     <Layout>
-      <Card m={50}>
+      <Box bg='orange.100' w='full' maxW='full' h='1em'></Box>
+      <Box bg='orange.100' w='full' maxW='full'>
+      <Card ml='1em' mr='1em'>
         <FormControl pl={50} pr={50} m={5}>
           <FormLabel>Category:</FormLabel>
           <Select placeholder='Select option' value={transactionType} onChange={(event) => setTransactionType(event.target.value)}>
@@ -120,6 +123,8 @@ export default function Add() {
         </FormControl>
         <Button colorScheme='blue' variant='outline' onClick={() => handleSubmit()} maxW={300} m={5} ml={50} >Add New Action</Button>
       </Card>
+      </Box>
+      <Box bg='orange.100' w='full' maxW='full' h='2em'></Box>
     </Layout>
   )
 }
