@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import BigLayout from '../components/layouts/BigLayout'
 
 export default function Home() {
+  window.location.href = "/auth/login"
   return <BigLayout>
     <Box>Quest for nature</Box>
     <Box>Go to login: </Box>
