@@ -61,7 +61,7 @@ export default function History() {
         <Box overflowY="auto" bg='orange.200' h='14em' maxHeight="14em" w='full' maxW='full'>
           <Grid p='0.5em' alignItems="center" templateColumns='repeat(1, 1fr)' gap={2} h='14em' maxH='14'>
               {transactionsHistory.map((transaction) => (
-                <GridItem>     
+                <GridItem key={transaction.id}>     
                     <Button onClick={(event)=>{setSelectedTransaction(transaction)}} maxW ="100%" width = "100%" bg="blue.200">
                       <Table alignItems="center" pt='1em' pb='1em'>
                         <Tr>
