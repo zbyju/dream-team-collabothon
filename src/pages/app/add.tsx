@@ -14,7 +14,8 @@ import {
   Card,
   Button,
   useToast,
-  Box
+  Box,
+  Heading
 } from "@chakra-ui/react";
 import { AuthInfo } from "../../types/user";
 
@@ -96,6 +97,7 @@ export default function Add() {
 
   return (
     <Layout>
+      <Heading m="5%">Add Action:</Heading>
       <Box bg='orange.100' w='full' maxW='full' h='1em'></Box>
       <Box bg='orange.100' w='full' maxW='full'>
       <Card ml='1em' mr='1em'>

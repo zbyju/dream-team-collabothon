@@ -33,7 +33,7 @@ export default function History() {
   
   return (
     <Layout>
-      <Heading m="5%">Action History</Heading>
+      <Heading m="5%">Action History:</Heading>
       <Box bg='orange.200' h='1em'></Box>
       <Box bg='orange.200' h='15em' maxHeight="15em" w='full' maxW='full'>
         <Table pl ='5em' pr='2em'   h='1em' maxH='1em' w='full' maxW='full' bg='red.100'>
