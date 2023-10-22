@@ -11,7 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         t.description as tdescription,
         c.id as cid,
         c.name as cname,
-        c.description as cdescription
+        c.description as cdescription,
+        c.score as cscore
         FROM 
           transactions t
         JOIN 
