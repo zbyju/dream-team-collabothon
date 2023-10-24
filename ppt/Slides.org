@@ -1,0 +1,36 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: none
+#+REVEAL_THEME: black
+#+Title: How to build sustainable tomorrow?
+#+Author: (Dream Team)
+#+Email: www.QN.cz
+* Idea
+** Personal sustainability as a challenge of tomorrow
+* Methodology & Data
+** CO2 Metodology
+- GHG Protocol (https://ghgprotocol.org/)
+- AIB (https://www.aib-net.org/)
+** CO2 Data
+- GHG Reporting Conversion tables 2023 (https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2023)
+* 
+:PROPERTIES:
+:reveal_background: QuestForNature.svg
+:reveal_background_size: 1000px
+:reveal_background_trans: slide
+:END:
+* Technology
+#+BEGIN_NOTES
+  Technologies we have used
+#+END_NOTES
+** Frontend
+- PWA
+- Next.JS @Firebase Hosting
+** Backend
+- Next.JS @Cloud Function
+- PostgreSQL 15 @Cloud SQL
+* [[https://www.qn.cz/][DEMO]] 
+* Connect with Us
+- Web: www.qn.cz
+- Twitter: @QN.cz
+- Blog: blog.qn.cz
+* Questions?
